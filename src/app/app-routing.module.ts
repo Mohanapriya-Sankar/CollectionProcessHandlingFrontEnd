@@ -11,6 +11,9 @@ import { CustomerDetailsComponent } from './admin/customer-details/customer-deta
 import { PendingComponent } from './customer-service/pending/pending.component';
 import { OtherIssuesComponent } from './customer/other-issues/other-issues.component';
 import { InstallmentComponent } from './customer/installment/installment.component';
+import { InstallmentpaymentComponent } from './customer/installmentpayment/installmentpayment.component';
+import { Installment1Component } from './customer/installment1/installment1.component';
+import { TotalpaymentComponent } from './customer/totalpayment/totalpayment.component';
 
 
 const routes: Routes = [
@@ -36,6 +39,10 @@ const routes: Routes = [
     component:CustomerComponent
   },
   {
+    path:'totalpayment',
+    component:TotalpaymentComponent
+  },
+  {
     path:'issues',
     component:IssuesComponent
   },
@@ -48,6 +55,10 @@ const routes: Routes = [
     component:InstallmentComponent
   },
   {
+    path:'payinstall1',
+    component:Installment1Component
+  },
+  {
     path:'details',
     component:CustomerDetailsComponent
   },
@@ -58,6 +69,10 @@ const routes: Routes = [
   {
     path:'other',
     component:OtherIssuesComponent
+  },
+  {
+    path:'payoptions',
+    component:InstallmentpaymentComponent
   }
 ];
 

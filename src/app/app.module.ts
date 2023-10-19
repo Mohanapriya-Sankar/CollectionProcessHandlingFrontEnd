@@ -15,6 +15,9 @@ import { PendingComponent } from './customer-service/pending/pending.component';
 import { OtherIssuesComponent } from './customer/other-issues/other-issues.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InstallmentComponent } from './customer/installment/installment.component';
+import { Installment1Component } from './customer/installment1/installment1.component';
+import { InstallmentpaymentComponent } from './customer/installmentpayment/installmentpayment.component';
+import { TotalpaymentComponent } from './customer/totalpayment/totalpayment.component';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { InstallmentComponent } from './customer/installment/installment.compone
     PendingComponent,
     OtherIssuesComponent,
     InstallmentComponent,
+    Installment1Component,
+    InstallmentpaymentComponent,
+    TotalpaymentComponent,
 
   ],
   imports: [

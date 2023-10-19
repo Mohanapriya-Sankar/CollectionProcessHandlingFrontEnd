@@ -11,6 +11,7 @@ import { ProjectserviceService } from 'src/app/service/projectservice.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+  id:any;
   name:any;
   paymentCard = true;
   successMessage:string='';
@@ -21,6 +22,10 @@ export class PaymentComponent {
   customerId:any;
   responseData: any;
   datas:any;
+  cardExpiryDate:any;
+  cardholderName:any;
+  cardNumber:any;
+  cvv:any;
   private baseUrl = 'http://localhost:9999';
 constructor(private eService:ProjectserviceService, private http:HttpClient,private router: Router)
 {
@@ -62,6 +67,7 @@ constructor(private eService:ProjectserviceService, private http:HttpClient,priv
 onSubmit() {
 
   let customer:any = localStorage.getItem("userData");
+  console.log(customer);
   this.http.post(`${this.baseUrl}/paid`, customer).subscribe(
     (response: any) => {
       console.log('Deleted successful:', response);
@@ -69,7 +75,7 @@ onSubmit() {
       this.http.post(`${this.baseUrl}/admin`, customer).subscribe(
         (data: any) => {
           console.log('Admin successful:', data);
-          const datas:customer={id:data.id,name:data.name,mobile:data.mobile,email:data.email,date:data.date,balance:data.balance,status:"Paid"}
+          const datas:customer={id:data.id,name:data.name,mobile:data.mobile,email:data.email,duedate:data.duedate,currentbill:data.currentbill,previousbill:data.previousbill,balance:data.balance,status:"Paid",type:data.type}
           console.log(datas);
           this.http.post(`${this.baseUrl}/update`, datas).subscribe(
             (response1: any) => {
@@ -85,6 +91,20 @@ onSubmit() {
       // Handle login error, e.g., display an error message
     }
   );
+}
+
+paymail():void{
+  let customer:any = localStorage.getItem("userData");
+  console.log(customer);
+  this.eService.paymail(customer).subscribe(response => {
+    console.log(response); 
+  });
+}
+
+submitAndHandleIssues() {
+  let customer: any = localStorage.getItem('userData');
+  this.onSubmit(); // Call the onSubmit method
+  this.paymail(); // Call the issues method
 }
 }
 

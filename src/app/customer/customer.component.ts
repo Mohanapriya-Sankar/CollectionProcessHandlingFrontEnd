@@ -50,7 +50,9 @@ export class CustomerComponent {
           console.log('OTP Verification Response:', response.id);
 
         localStorage.setItem("userData",response.id);
-  
+        localStorage.setItem("previousBill",response.previousbill);
+        localStorage.setItem("installmentType",response.type);
+
           // Successful login, navigate to the module page
   
           // this.router.navigate(['/details']);
@@ -91,7 +93,15 @@ export class CustomerComponent {
       // this.router.navigate(['/paymentoptions']);
       this.otpSent=true;
       this.otpVerified=true;
-      this.router.navigate(['/issues']);
+      let Bill:any = localStorage.getItem("previousBill");
+      console.log(Bill);
+      if(Bill=="0")
+      {
+      this.router.navigate(['/totalpayment']);
+      }
+      else{
+        this.router.navigate(['/issues']);
+      }
     
     }
 

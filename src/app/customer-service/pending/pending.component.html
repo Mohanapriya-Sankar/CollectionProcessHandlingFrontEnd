@@ -18,6 +18,8 @@
                   <li ><a routerLink="/admin">Admin</a></li>
                   <li class="current"><a routerLink="/servi">Customer Services</a></li>
                   <li ><a routerLink="/customer">Customer</a></li>
+                  <li ><a routerLink="/servi">Log Out</a></li>
+
   
                 </ul>
               </nav>
@@ -42,9 +44,13 @@
                     <th>Mobile Number</th>
                     <th>Email</th>
                     <th>Due Date</th>
-                    <th>Outstanding Balance</th>
+                    <th>Previous Balance</th>
+                    <th>Current Balance</th>
+                    <th>Total Balance</th>
                     <th>Days</th>
-                    <th>Link</th>
+                    <th>Type</th>
+                    <th>Installment Amount</th>
+                    <th>Send Email</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,8 +60,12 @@
                     <td>{{c.mobile}}</td>
                     <td>{{c.email}}</td>
                     <td>{{c.duedate}}</td>
+                    <td>{{c.previousbill}}</td>
+                    <td>{{c.currentbill}}</td>
                     <td>{{c.balance}}</td>
                     <td>{{c.days}}</td>
+                    <td>{{c.type}}</td>
+                    <td>{{c.installmentamount}}</td>
                   <td><button (click)="sendEmail(c)">Send</button></td></tr>
                 </tbody>
                 </table>

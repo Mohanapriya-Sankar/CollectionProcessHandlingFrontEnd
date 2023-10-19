@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProjectserviceService {
+  [x: string]: any;
  
 
 
@@ -59,6 +60,21 @@ export class ProjectserviceService {
     return this.http.post(`${this.baseUrl}/email/${id}`, null);
   }
 
+  issues(id:string):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/issues/${id}`, null);
+  }
+
+  paymail(id:string):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/paymail/${id}`, null);
+  }
+
+  installmentmail(id:string):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/installmentmail/${id}`, null);
+  }
+
   phone(otpmodule: any): Observable<any> {
 
     return this.http.post(`${this.baseUrl}`+"/phone", otpmodule);
@@ -92,6 +108,18 @@ export class ProjectserviceService {
   update(response1: any): Observable<any> {
 
     return this.http.post('${this.baseUrl}update', response1);
+
+  }
+
+  installmentamount(response2: any): Observable<any> {
+
+    return this.http.post('${this.baseUrl}installmentamount', response2);
+
+  }
+
+  updateinstallment(response2: any): Observable<any> {
+
+    return this.http.post('${this.baseUrl}updateinstallment', response2);
 
   }
 
