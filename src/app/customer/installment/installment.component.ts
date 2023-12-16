@@ -27,6 +27,7 @@ export class InstallmentComponent {
   cardholderName:any;
   cardNumber:any;
   cvv:any;
+  pageReloaded: boolean = false;
   private baseUrl = 'http://localhost:9999';
 empform: any;
 constructor(private eService:ProjectserviceService, private http:HttpClient,private router: Router)
@@ -50,6 +51,16 @@ constructor(private eService:ProjectserviceService, private http:HttpClient,priv
   //     // Handle login error, e.g., display an error message
     }
   ); 
+  // let timeoutId: any;
+
+// // Check if the pageReloaded flag is not set and the timeoutId is not set
+// if (!this.pageReloaded && !timeoutId) {
+//   timeoutId = setTimeout(() => {
+//     location.reload();
+//     this.pageReloaded = true;
+//     clearTimeout(timeoutId); // Clear the timeout after reloading
+//   }, 8000);
+// }
 }
 onSubmit() {
 
@@ -73,6 +84,13 @@ onSubmit() {
           this.http.post(`${this.baseUrl}/updateinstallment`, datas).subscribe(
             (response1: any) => {
               console.log('update successful:', response1);
+            }
+          );
+          const datas1:customer={id:data.id,name:data.name,mobile:data.mobile,email:data.email,duedate:data.duedate,currentbill:data.currentbill,previousbill:newPreviousString,balance:newBalanceString,status:data.status,type:data.type}
+          console.log(datas1);
+          this.http.post(`${this.baseUrl}/update`, datas1).subscribe(
+            (response1: any) => {
+              console.log('Admin update successful:', response1);
             }
           );
         }
@@ -118,20 +136,10 @@ onSubmit() {
                   // Handle login error, e.g., display an error message
                 }
               );
-              this.router.navigate(['/details']);
-            // },
-            
-          // );
         }
+        this.router.navigate(['/display']);
       }
       );
-  //     this.router.navigate(['/details']);
-  //   },
-  //   (error: any) => {
-  //     console.error('Delete and Update failed:', error);
-  //     // Handle login error, e.g., display an error message
-  //   }
-  // );
 }
 
 installmentmail():void{
@@ -146,7 +154,6 @@ submitAndHandleIssues() {
   let customer: any = localStorage.getItem('userData');
   this.installmentmail(); // Call the issues method
   this.onSubmit(); // Call the onSubmit method
-  
 }
 
 }

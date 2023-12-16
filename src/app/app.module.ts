@@ -15,9 +15,10 @@ import { PendingComponent } from './customer-service/pending/pending.component';
 import { OtherIssuesComponent } from './customer/other-issues/other-issues.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InstallmentComponent } from './customer/installment/installment.component';
-import { Installment1Component } from './customer/installment1/installment1.component';
 import { InstallmentpaymentComponent } from './customer/installmentpayment/installmentpayment.component';
 import { TotalpaymentComponent } from './customer/totalpayment/totalpayment.component';
+import { DisplaypaymentComponent } from './customer/displaypayment/displaypayment.component';
+import { DisplayinstallpaymentComponent } from './customer/displayinstallpayment/displayinstallpayment.component';
 
 
 @NgModule({
@@ -33,9 +34,10 @@ import { TotalpaymentComponent } from './customer/totalpayment/totalpayment.comp
     PendingComponent,
     OtherIssuesComponent,
     InstallmentComponent,
-    Installment1Component,
     InstallmentpaymentComponent,
     TotalpaymentComponent,
+    DisplaypaymentComponent,
+    DisplayinstallpaymentComponent,
 
   ],
   imports: [

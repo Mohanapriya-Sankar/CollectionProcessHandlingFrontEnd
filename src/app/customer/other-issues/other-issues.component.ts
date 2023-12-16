@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectserviceService } from 'src/app/service/projectservice.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProjectserviceService } from 'src/app/service/projectservice.service';
 })
 export class OtherIssuesComponent {
   customerId:any;
-constructor(private eService: ProjectserviceService){}
+constructor(private eService: ProjectserviceService,private router:Router){}
   successMessage:string='';
   issues():void{
     let customer:any = localStorage.getItem("userData");
@@ -16,6 +17,9 @@ constructor(private eService: ProjectserviceService){}
     this.eService.issues(customer).subscribe(response => {
       console.log(response); 
     });
+    this.router.navigate(['/displayinstall']);
+    
+
   }
     // this.successMessage='Your Issues will be Resolved soon.';
 

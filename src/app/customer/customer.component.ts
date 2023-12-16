@@ -37,7 +37,7 @@ export class CustomerComponent {
       username: this.phoneNumber,
       phoneNumber: cusform.value.phone};
 
-      this.http.post(`${this.baseUrl}/phone`, otpmodule).subscribe(
+      this.http.post(`${this.baseUrl}/mobile`, otpmodule).subscribe(
 
         (response: any) => {
 
@@ -61,7 +61,7 @@ export class CustomerComponent {
             (data: any) => {
               console.log('OTP Sent:',data);
               this.otp = data.otp
-            this.router.navigate(['/otp']);
+            // this.router.navigate(['/otp']);
       
             this.otpSent=true;
       

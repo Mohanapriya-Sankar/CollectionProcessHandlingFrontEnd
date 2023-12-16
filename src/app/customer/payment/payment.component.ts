@@ -47,23 +47,6 @@ constructor(private eService:ProjectserviceService, private http:HttpClient,priv
     }
   ); 
 }
-// onSubmit() {
-
-//   let customer:any = localStorage.getItem("userData");
-//   this.http.post(`${this.baseUrl}/paid`, customer).subscribe(
-//     (response: any) => {
-//       console.log('Deleted successful:', response);
-//       // Successful login, navigate to the module page
-//       this.router.navigate(['/details']);
-//     },
-//     (error: any) => {
-//       console.error('Login failed:', error);
-//       // Handle login error, e.g., display an error message
-//     }
-//   );
-// }
-// }
-
 onSubmit() {
 
   let customer:any = localStorage.getItem("userData");
@@ -75,7 +58,7 @@ onSubmit() {
       this.http.post(`${this.baseUrl}/admin`, customer).subscribe(
         (data: any) => {
           console.log('Admin successful:', data);
-          const datas:customer={id:data.id,name:data.name,mobile:data.mobile,email:data.email,duedate:data.duedate,currentbill:data.currentbill,previousbill:data.previousbill,balance:data.balance,status:"Paid",type:data.type}
+          const datas:customer={id:data.id,name:data.name,mobile:data.mobile,email:data.email,duedate:data.duedate,currentbill:"0",previousbill:"0",balance:"0",status:"Paid",type:data.type}
           console.log(datas);
           this.http.post(`${this.baseUrl}/update`, datas).subscribe(
             (response1: any) => {
@@ -84,7 +67,7 @@ onSubmit() {
           );
         }
       );
-      this.router.navigate(['/details']);
+      this.router.navigate(['/display']);
     },
     (error: any) => {
       console.error('Delete and Update failed:', error);

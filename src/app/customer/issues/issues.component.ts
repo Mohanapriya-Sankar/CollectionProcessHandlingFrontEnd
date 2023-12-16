@@ -15,8 +15,9 @@ export class IssuesComponent {
   onSubmit()
   {
     let installmentType:any = localStorage.getItem("installmentType");
+    console.log("Hello");
     console.log(installmentType);
-    if(installmentType == null || installmentType == "null" || installmentType == "0")
+    if(installmentType === null || installmentType == "null" || installmentType == 0)
     {
       this.router.navigate(['/payoptions']);
     }
